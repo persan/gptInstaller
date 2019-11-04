@@ -1,0 +1,15 @@
+@gpt-target adapter
+@gpt
+
+# Header
+Name: Adapter
+Category: _private
+Project: @_project_name_@.gpr
+script: initialize_git.py
+
+# Variables
+Project_Name: default: The name of the project.
+
+# Description
+[Description]
+A sampel-project template.
