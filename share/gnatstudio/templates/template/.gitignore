@@ -16,5 +16,3 @@ messages.txt
 project_name-main
 *.pyc
 *.cswi
-_temp.txt
-Makefile.conf

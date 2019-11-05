@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 from os.path import *
 import re
@@ -98,11 +99,15 @@ class GptInstaller:
     def mkdir(self, d):
         d = join(self.targetfolder, self.target,
                  d[len(self.sourcefolder)+1:])
+        if "/.git" in d:
+            return
         if not exists(d) and ("(" not in d):
             os.makedirs(d)
             print ("mkdir %s" % d)
         
     def cp(self, f):
+        if "/.git/" in f:
+            return
         tgt = join(self.targetfolder, self.target,
                    self.format(f[len(self.sourcefolder)+1:]))
         print ("cp  %s -> %s" % (f, tgt))
@@ -120,6 +125,8 @@ class GptInstaller:
                 outf.write(self.format("\n".join(buffer)))
         
     def fnok(self, name):
+        if os.path.islink(name):
+            return False
         for ignore in self.ignores:
             if fnmatch.fnmatch(name, ignore):
                 return False
@@ -140,8 +147,8 @@ def main(argv):
         for i in argv[1:]:
             if isfile(i):
                 name, ext = splitext(i)
-                if ext == ".gpt":                
-                    GptInstaller(i).install()                    
+                if ext == ".gpt":
+                    GptInstaller(i).install()
             elif isdir(i):
                 for name in glob.glob(join(i, "*.gpt")):
                     GptInstaller(name).install()

@@ -1,11 +1,21 @@
-#!/usr/bin/make -f
-name := project_name
-label = type:interface_component itar:no license:MIT ci-nr:N/A
-depend :=
-type =
+
+-include Makefile.conf
+SOURCES=share/gnatstudio/support bin
+
+setup:
 
 
-project::
+Makefile.conf:Makefile
+	echo "export PREFIX:=$(shell dirname $(shell dirname $(shell which gnat)))" >${@}
+	echo "export PATH:=${PATH}" >>${@}
 
-generate::
+install:
+	tar -c ${SOURCES} | (cd ${PREFIX}; tar -x)
+
+uninstall:
+	@find ${SOURCES} -type f  >${CURDIR}/_temp.txt
+	@find ${SOURCES} -type l >>${CURDIR}/_temp.txt
+	@cd ${PREFIX}; rm -f $(shell cat ${CURDIR}/_temp.txt)
+	@rm_ temp.txt
+	
 

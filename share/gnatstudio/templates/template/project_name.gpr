@@ -1,0 +1,48 @@
+-- with "syst_default.ss/syst_default.gpr";
+project Project_Name is
+   Kind         := "Adapter-project";
+
+   for Main use ("project_name-main.adb");
+
+   for Languages use ("Ada", "python","Makefile");
+
+   for Languages use project'Languages &  ("gpt"); -- @gpt-remove
+
+   for Source_Dirs use (".", "src/**");
+   for Object_Dir use ".obj";
+
+   package Builder is
+      for Switches ("ada") use ("-s", "-j0", "-g", "-k", "-C");
+   end Builder;
+
+   package Compiler is
+      for Driver ("gpt") use ""; -- @gpt-remove
+      for Driver ("Python") use "";
+      for Driver ("Makefile") use "";
+
+      for Switches ("ada") use ("-g",
+                                "-gnatQ",
+                                "-fcallgraph-info=su,da",
+                                "-fstack-check",
+                                "-gnatwa",
+                                "-gnatyABOabcdfhiklnprtux");
+   end Compiler;
+
+
+   package Documentation is
+      for Documentation_Dir use "doc";
+      for Image_Dir use "doc/images";
+   end Documentation;
+
+   package Ide is
+      for Vcs_Kind use "git";
+   end Ide;
+
+   package Naming is
+      for Spec_Suffix ("gpt") use ".gpt" ; -- @gpt-remove
+      for Body_Suffix ("python") use ".py";
+      for Body_Suffix ("Makefile") use ".mk";
+      for Implementation_Exceptions ("Makefile") use ("Makefile");
+   end Naming;
+
+end Project_Name;

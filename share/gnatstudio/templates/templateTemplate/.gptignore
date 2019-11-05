@@ -1,7 +1,9 @@
+install_template.py
+install_template_gps.py
 b__*
 messages.txt
 *.cgpr
-*.stderr
+project_name.ads.stderr
 *.stdout
 *.ali
 *.ci
@@ -16,5 +18,4 @@ messages.txt
 project_name-main
 *.pyc
 *.cswi
-_temp.txt
-Makefile.conf
+.#*#
