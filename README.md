@@ -9,5 +9,7 @@ This project will install the installer alocg with a GPS-integration as
 well as the TemplateTemplate project.
 
 # How to install
+```
 $make setup
 $sudo make install
+```
