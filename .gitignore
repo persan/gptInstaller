@@ -19,3 +19,5 @@ project_name-main
 _temp.txt
 Makefile.conf
 .#*
+*ref_cahche.db
+default.gpr
