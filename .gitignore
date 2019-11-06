@@ -18,3 +18,4 @@ project_name-main
 *.cswi
 _temp.txt
 Makefile.conf
+.#*
