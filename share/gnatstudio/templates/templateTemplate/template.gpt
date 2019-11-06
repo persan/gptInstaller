@@ -1,15 +1,11 @@
-@gpt-target adapter
-@gpt
-
 # Header
-Name: Adapter
+Name: Template Template
 Category: Misc
-Project: @_project_name_@.gpr
-script: template_helper.py
+Project: project_name.gpr
+script: template_template_helper.py
 
 # Variables
 Project_Name: default: The name of the project.
-Statefull: False : be statefull: True; False
 
 # Description
 [Description]

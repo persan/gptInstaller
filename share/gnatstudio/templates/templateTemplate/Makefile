@@ -1,11 +1,25 @@
 #!/usr/bin/make -f
-name := project_name
-label = type:interface_component itar:no license:MIT ci-nr:N/A
-depend :=
-type =
+
+-include Makefile.conf
+
+setup:Makefile.conf
+
+PROJECT:=project_name.gpr
+GPRBUILDFLAGS:=-p
+
+Makefile.conf:
+	echo "export PREFIX?=$(shell dirname $(shell dirname $(shell which gnat)))" >${@}
+	echo "export PATH:=${PATH}" >>${@}
 
 
-project::
+compile:
+	gprbuild  -P ${PROJECT} ${GPRBUILDFLAGS}
 
-generate::
+test:
+	${MAKE} -C test all
 
+install:
+	gprinstall  -P ${PROJECT} ${GPRBUILDFLAGS} --prefix=${DESTDIR}${PREFIX}
+
+clean:
+	git clean -xdf
