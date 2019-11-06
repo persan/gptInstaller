@@ -6,6 +6,7 @@ setup:Makefile.conf
 
 PROJECT:=project_name.gpr
 GPRBUILDFLAGS:=-p
+
 Makefile.conf:
 	echo "export PREFIX?=$(shell dirname $(shell dirname $(shell which gnat)))" >${@}
 	echo "export PATH:=${PATH}" >>${@}
@@ -19,3 +20,6 @@ test:
 
 install:
 	gprinstall  -P ${PROJECT} ${GPRBUILDFLAGS} --prefix=${DESTDIR}${PREFIX}
+
+clean:
+	git clean -xdf

@@ -19,3 +19,6 @@ uninstall:
 	@rm_ temp.txt
 	
 
+clean:
+	git clean -xdf
+
