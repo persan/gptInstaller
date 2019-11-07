@@ -7,7 +7,7 @@ import sys
 class Project_Template_Project:
     GIT_COMMIT = ["git", "commit", "-mInitial commit in project creation."]
     GIT_ADD = ["git", "add",  "."]
-    GIT_INIT = ss["git", "init"]
+    GIT_INIT = ["git", "init"]
 
     def __init__(self):
         pass

@@ -22,3 +22,4 @@ Makefile.conf
 *ref_cahche.db
 default.gpr
 _test
+_temp

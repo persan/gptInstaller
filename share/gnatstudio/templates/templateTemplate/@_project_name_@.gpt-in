@@ -4,7 +4,7 @@
 # Header
 Name: @_Project_Name_@
 Category: Misc
-Project: @@_project_name_@.gpr
+Project: ##_project_name_##.gpr
 script: template_helper.py
 
 # Variables
