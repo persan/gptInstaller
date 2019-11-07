@@ -1,6 +1,9 @@
 
 -include Makefile.conf
-SOURCES=share/gnatstudio/support bin
+
+SOURCES += share/gnatstudio/support
+SOURCES += bin
+SOURCES += share/gnatstudio/templates/templateTemplate
 
 setup:
 
@@ -18,8 +21,7 @@ uninstall:
 	@find ${SOURCES} -type l >>${CURDIR}/_temp.txt
 	@cd ${DESTDIR}${PREFIX}; rm -f $(shell cat ${CURDIR}/_temp.txt)
 	@rm -f temp.txt
-	
+
 
 clean:
 	git clean -xdf
-

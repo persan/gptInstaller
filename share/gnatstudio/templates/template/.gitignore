@@ -1,5 +1,3 @@
-b__*
-messages.txt
 *.cgpr
 *.stderr
 *.stdout
@@ -13,6 +11,9 @@ messages.txt
 *.o
 *.su
 *.d
-project_name-main
 *.pyc
 *.cswi
+b__*
+clang_ref_cache.db
+messages.txt
+project_name-main

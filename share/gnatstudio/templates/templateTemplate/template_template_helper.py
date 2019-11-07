@@ -11,7 +11,7 @@ class Project_Template_Project:
         return 0
 
     def on_apply(self):
-        for src in glob.glob("*.in"):
+        for src in glob.glob("*.gpt.in"):
             tgt=basename(src)
             os.rename(src,tgt)
 

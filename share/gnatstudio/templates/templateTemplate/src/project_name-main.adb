@@ -31,6 +31,7 @@ begin
       begin
          exit when S'Length = 0;
          Executed := True;
+         -- Do some real work here.
          Put_Line ("Got " & S);
       end;
    end loop;

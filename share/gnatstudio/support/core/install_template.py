@@ -3,59 +3,17 @@ import os
 from os.path import *
 import re
 import fnmatch
+import imp
 
-def import_module(filename):
-    with open(filename, 'r') as file:
-        file_contents = file.read()
-    module_object = exec(file_contents)
-    return module_object
-    
-class GprInstallerConfig:    
-    def __init__(self, sourcefolder):
-        self.target = None
-        # default 
-        self.ext=None
-        self.loadexternal()
-        HOME = os.getenv("HOME")
-        if HOME:
-            HOME = join(HOME, ".gnatstudio", "templates")
-            if exists(HOME):
-                self.target = HOME
-
-        temp = join(sourcefolder, "..", "..", "templates")
-        if exists(temp):
-            self.target = abspath(temp)
-        if not self.target:
-            self.target = HOME
-        try:
-            import GPS            
-        except:
-            pass
-    def loadexternal(self):
-        path=abspath(self.sourcefolder)
-        while len(path) > 3:
-            _path=join(path,"gptinstaller.config.py")
-            if exists(_path):
-                self.ext=import_module(_path)
-                return
-             path=dirname(path)
-                
-    def calculatetargetfolder(self):
-        if self.ext:
-            print ("using external conf")
-            return self.ext.get_config().getTargetFolder()
-        olddir = "<N/A>"
-        sourcefolder = self.sourcefolder
-        while sourcefolder != olddir:
-            olddir = sourcefolder
-            name, ext = splitext(basename(sourcefolder))
-            print (sourcefolder, name, ext)
-            if ext == ".src" and exists(join(dirname(sourcefolder), name)):
-                return join(dirname(sourcefolder), 
-                            name, 
-                            basename(self.sourcefolder))
-            sourcefolder = dirname(sourcefolder)
-        return "-"
+def find_module(filename):
+    path=abspath(".")
+    while len(path) > 3:
+        _path=join(path, filename)
+        if exists(_path):
+            with open(_path, 'r') as file:
+                return imp.load_source("GPTConfig",_path)
+        path=dirname(path)
+    return None
 
         
 class GptInstaller:
@@ -73,14 +31,17 @@ class GptInstaller:
                     self.target = m.group(1)
         if not self.target:
             raise Exception()
-        self.config = GprInstallerConfig(self.sourcefolder)
+        self.config = find_module("gptinstaller.config.py")
+        if self.config:
+            self.config = self.config.get_config()
         if exists(join(self.sourcefolder, ".gptignore")):
             self.readIgnores(join(self.sourcefolder, ".gptignore"))
         
-        if targetfolder:
-            self.targetfolder = targetfolder
+        if self.config:
+            self.targetfolder = self.config.getTargetFolder()
         else:
-            self.targetfolder = self.config.target
+            print("Using default target")
+            self.targetfolder = join(os.getenv("HOME"),".gnatstudio","templates")
             
     def readIgnores(self, path):
         with open(path) as inf:
@@ -177,4 +138,4 @@ def main(argv):
 if __name__ == "__main__":
     # main(sys.argv)
     t=GptInstaller("../../templates/template/adapter.gpt")
-
+    t.install()
