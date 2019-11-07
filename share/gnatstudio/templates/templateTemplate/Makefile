@@ -7,7 +7,7 @@ setup:Makefile.conf
 PROJECT:=project_name.gpr
 GPRBUILDFLAGS:=-p
 
-Makefile.conf:
+Makefile.conf:  # IGNORE
 	echo "export PREFIX?=$(shell dirname $(shell dirname $(shell which gnat)))" >${@}
 	echo "export PATH:=${PATH}" >>${@}
 
@@ -23,3 +23,6 @@ install:
 
 clean:
 	git clean -xdf
+
+
+

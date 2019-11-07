@@ -13,4 +13,5 @@ Statefull: False : be statefull: True; False
 
 # Description
 [Description]
-A sampel-project template that will initialize wersion controll
+A sampel-project template that will initialize version controll with git.
+

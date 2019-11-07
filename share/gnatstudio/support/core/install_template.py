@@ -4,11 +4,18 @@ from os.path import *
 import re
 import fnmatch
 
-
+def import_module(filename):
+    with open(filename, 'r') as file:
+        file_contents = file.read()
+    module_object = exec(file_contents)
+    return module_object
+    
 class GprInstallerConfig:    
     def __init__(self, sourcefolder):
         self.target = None
         # default 
+        self.ext=None
+        self.loadexternal()
         HOME = os.getenv("HOME")
         if HOME:
             HOME = join(HOME, ".gnatstudio", "templates")
@@ -20,13 +27,23 @@ class GprInstallerConfig:
             self.target = abspath(temp)
         if not self.target:
             self.target = HOME
-            
         try:
             import GPS            
         except:
             pass
-
+    def loadexternal(self):
+        path=abspath(self.sourcefolder)
+        while len(path) > 3:
+            _path=join(path,"gptinstaller.config.py")
+            if exists(_path):
+                self.ext=import_module(_path)
+                return
+             path=dirname(path)
+                
     def calculatetargetfolder(self):
+        if self.ext:
+            print ("using external conf")
+            return self.ext.get_config().getTargetFolder()
         olddir = "<N/A>"
         sourcefolder = self.sourcefolder
         while sourcefolder != olddir:
