@@ -19,6 +19,7 @@ class Project_Template_Project:
         GPS.Console().write(subprocess.check_output(GIT_INIT))
         GPS.Console().write(subprocess.check_output(GIT_ADD))
         GPS.Console().write(subprocess.check_output(GIT_COMMIT))
+        GPS.Project.recompute()
 
 
 def get_object():
