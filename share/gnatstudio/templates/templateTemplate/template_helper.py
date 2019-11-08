@@ -7,7 +7,7 @@ import sys
 class Project_Template_Project:
     GIT_COMMIT = ["git", "commit", "-mInitial commit in project creation."]
     GIT_ADD = ["git", "add",  "."]
-    GIT_INIT = ["git", "init"]
+    GIT_INIT = ss["git", "init"]
 
     def __init__(self):
         pass
@@ -19,6 +19,7 @@ class Project_Template_Project:
         GPS.Console().write(subprocess.check_output(GIT_INIT))
         GPS.Console().write(subprocess.check_output(GIT_ADD))
         GPS.Console().write(subprocess.check_output(GIT_COMMIT))
+        GPS.Project.recompute()
 
 
 def get_object():

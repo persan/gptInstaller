@@ -5,8 +5,11 @@ SOURCES += share/gnatstudio/support
 SOURCES += bin
 SOURCES += share/gnatstudio/templates/templateTemplate
 
-setup:
+	
+setup:${HOME}/.gnatstudio/plug-ins/templates_in_home.py
 
+${HOME}/.gnatstudio/plug-ins/templates_in_home.py:templates_in_home.py
+	cp ${<} ${@}
 
 Makefile.conf:Makefile
 	@echo "export PREFIX?=$(shell dirname $(shell dirname $(shell which gnat)))" >${@}
