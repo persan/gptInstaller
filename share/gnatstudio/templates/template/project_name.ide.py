@@ -2,4 +2,7 @@
 # loaded into gnat programming studio.
 
 import GPS
-print "poff"
+
+
+def initialize_project_plugin():
+    print ("initialize_project_plugin()")

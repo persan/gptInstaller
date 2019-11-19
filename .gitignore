@@ -23,3 +23,4 @@ Makefile.conf
 default.gpr
 _test
 _temp
+*cache.db
