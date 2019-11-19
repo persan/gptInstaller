@@ -7,8 +7,10 @@ SOURCES += share/gnatstudio/templates/templateTemplate
 
 	
 setup:${HOME}/.gnatstudio/plug-ins/templates_in_home.py
+${HOME}/.gnatstudio/plug-ins:
+	mkdir -p ${HOME}/.gnatstudio/plug-ins
 
-${HOME}/.gnatstudio/plug-ins/templates_in_home.py:templates_in_home.py
+${HOME}/.gnatstudio/plug-ins/templates_in_home.py:templates_in_home.py ${HOME}/.gnatstudio/plug-ins
 	cp ${<} ${@}
 
 Makefile.conf:Makefile
