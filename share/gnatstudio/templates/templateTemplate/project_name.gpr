@@ -4,9 +4,10 @@ project Project_Name is
 
    MAJOR  := "0";
    MINOR  := "0";
-   PATCH  := "0";
+   PATCH  := "1";
 
    VERSION := MAJOR & "." & MINOR & "." & PATCH;
+   DATE    := "2000-01-02";
 
    for Main use ("project_name-main.adb");
 

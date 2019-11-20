@@ -1,0 +1,25 @@
+with "project_name.gpr";
+project Project_Name.Helpers is
+
+   for Main use ("project_name-helper.adb");
+
+   for Languages use ("Ada");
+
+
+   for Source_Dirs use ("helpers.src/**");
+   for Object_Dir use ".obj/" & project'Name;
+   for Exec_Dir use "bin";
+
+   package Builder is
+      for Switches ("ada") use ("-s", "-j0", "-g", "-k", "-C");
+   end Builder;
+
+   package Compiler is
+
+      for Switches ("ada") use ("-g", "-gnateDVERSION=""" & Project_Name.VERSION & """",
+                                "-g", "-gnateDDATE=""" & Project_Name.DATE & """",
+                                "-gnateG",
+                                "-gnatyABOabcdfhiklnprtux");
+   end Compiler;
+
+end Project_Name.Helpers;
