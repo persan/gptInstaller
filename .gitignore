@@ -13,7 +13,8 @@ messages.txt
 *.o
 *.su
 *.d
-project_name-main
+*-main
+*-helper
 *.pyc
 *.cswi
 _temp.txt
@@ -24,3 +25,4 @@ default.gpr
 _test
 _temp
 *cache.db
+*.prep

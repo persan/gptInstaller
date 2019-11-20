@@ -16,4 +16,6 @@ b__*
 install_template.py
 install_template_gps.py
 messages.txt
-project_name-main
+*-main
+clang_ref_cache.db
+
