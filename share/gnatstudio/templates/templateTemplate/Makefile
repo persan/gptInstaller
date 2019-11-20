@@ -26,3 +26,10 @@ clean:
 
 
 
+
+helper:
+	gprbuild -p -P ${PROJECT}-helper
+
+tag:helper
+	bin/project_name-helper --strict-date
+

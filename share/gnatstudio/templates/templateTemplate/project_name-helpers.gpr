@@ -1,7 +1,7 @@
 with "project_name.gpr";
 project Project_Name.Helpers is
 
-   for Main use ("project_name-helper.adb");
+   for Main use ("project_name-helper-main.adb");
 
    for Languages use ("Ada");
 
@@ -11,6 +11,7 @@ project Project_Name.Helpers is
    for Exec_Dir use "bin";
 
    package Builder is
+      for Executable ("project_name-helper-main.adb") use "project_name-helper";
       for Switches ("ada") use ("-s", "-j0", "-g", "-k", "-C");
    end Builder;
 
