@@ -26,3 +26,10 @@ clean:
 
 install:			# @SKIP-INSTALL
 	make -C .. all          # @SKIP-INSTALL
+
+helper:
+	gprbuild -p -P ${PROJECT}-helper
+
+tag:helper
+	bin/project_name-helper --strict-date
+

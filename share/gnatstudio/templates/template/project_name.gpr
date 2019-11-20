@@ -7,7 +7,7 @@ project Project_Name is
    PATCH  := "1";
 
    VERSION := MAJOR & "." & MINOR & "." & PATCH;
-   DATE    := "2000-01-02";
+   DATE    := "2019-11-20";
 
    for Main use ("project_name-main.adb");
 
