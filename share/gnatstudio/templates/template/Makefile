@@ -22,7 +22,7 @@ install:
 	gprinstall  -P ${PROJECT} ${GPRBUILDFLAGS} --prefix=${DESTDIR}${PREFIX}
 
 clean:
-	git clean -xdf
+	git clean -xdf .
 
 install:			# @SKIP-INSTALL
 	make -C .. all          # @SKIP-INSTALL
@@ -32,4 +32,5 @@ helper:
 
 tag:helper
 	bin/project_name-helper --strict-date
+
 
