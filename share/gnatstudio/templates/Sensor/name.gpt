@@ -1,0 +1,16 @@
+@gpt-target name
+@gpt
+
+# Header
+Name: Name
+Category: Misc
+Project: @_project_name_@.gpr
+script: template_helper.py
+
+# Variables
+Project_Name: default: The name of the project.
+Statefull: False : be statefull: True; False
+
+# Description
+[Description]
+A sampel-project template that will initialize wersion controll
