@@ -1,6 +1,6 @@
 import GPS
 import install_template
-from gps_utils import *
+from gs_utils import *
 
 
 def project_contains_gpt(f):
