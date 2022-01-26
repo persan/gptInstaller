@@ -2,17 +2,12 @@
 -include Makefile.conf
 
 SOURCES += share/gnatstudio/support
+SOURCES += share/gnatstudio/library
 SOURCES += bin
 SOURCES += share/gnatstudio/templates/templateTemplate
 
-	
-setup:${HOME}/.gnatstudio/plug-ins/templates_in_home.py
-${HOME}/.gnatstudio/plug-ins:
-	mkdir -p ${HOME}/.gnatstudio/plug-ins
-
-${HOME}/.gnatstudio/plug-ins/templates_in_home.py:templates_in_home.py ${HOME}/.gnatstudio/plug-ins
-	cp ${<} ${@}
-
+setup:
+	@true
 Makefile.conf:Makefile
 	@echo "export PREFIX?=$(shell dirname $(shell dirname $(shell which gnat)))" >${@}
 	@echo "export PATH:=${PATH}" >>${@}
