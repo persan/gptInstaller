@@ -2,8 +2,14 @@ import subprocess
 import GPS
 import sys
 
+from gs_utils.console_process import ANSI_Console_Process
+
 
 class Project_Template_Project:
+
+    INIT = ["git", "init",   "."]
+    ADD = ["git", "add",   "."]
+    COMMIT = ["git", "commit", "-mInitial commit in project creation."]
 
     def __init__(self):
         pass
@@ -15,23 +21,13 @@ class Project_Template_Project:
         self.write(str(assistant) + "\n")
         return 0
 
-    def write(self, item):
-
-        GPS.Console().write('"%s"' % item)
-
     def on_apply(self):
         try:
             # Initialize the project as a git project
             #
-            self.write(str(self) + "\n")
-            self.write(str(dir(self)) + "\n")
-            self.write(subprocess.check_output(["git", "init", "."]))
-            self.write(subprocess.check_output
-                       (["git", "add",  "."]))
-            self.write(subprocess.check_output
-                       (["git", "commit",
-                         "-mInitial commit in project creation."]))
-
+            ANSI_Console_Process(command=INIT, force=False)
+            ANSI_Console_Process(command=ADD, force=False)
+            ANSI_Console_Process(command=COMMIT, force=False)
             GPS.Project.recompute()
         except:
             print("Unexpected error:", sys.exc_info()[0])
@@ -39,4 +35,3 @@ class Project_Template_Project:
 
 def get_object():
     return Project_Template_Project()
-

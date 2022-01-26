@@ -26,3 +26,6 @@ _test
 _temp
 *cache.db
 *.prep
+*.orig
+.clang-format
+compile_commands.json

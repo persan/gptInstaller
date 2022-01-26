@@ -1,4 +1,3 @@
--- with "syst_default.ss/syst_default.gpr";
 with "gnatcoll.gpr";
 project Project_Name is
 

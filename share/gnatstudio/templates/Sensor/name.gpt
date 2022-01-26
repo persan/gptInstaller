@@ -1,6 +1,3 @@
-@gpt-target name
-@gpt
-
 # Header
 Name: Name
 Category: Misc
@@ -9,7 +6,7 @@ script: template_helper.py
 
 # Variables
 Project_Name: default: The name of the project.
-Statefull: False : be statefull: True; False
+Statefull:False:be statefull:True;False
 
 # Description
 [Description]

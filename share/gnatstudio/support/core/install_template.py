@@ -138,6 +138,5 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    # main(sys.argv)
-    t = GptInstaller("../../templates/template/adapter.gpt")
+    main(sys.argv)
     t.install()

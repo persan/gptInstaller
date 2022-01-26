@@ -2,11 +2,12 @@ import subprocess
 import GPS
 import sys
 
+print("1")
 
 class Project_Template_Project:
 
     def __init__(self):
-        pass
+        print("2")
         # self.assistant = None
 
     def get_pages(self, assistant):
@@ -37,6 +38,6 @@ class Project_Template_Project:
             print("Unexpected error:", sys.exc_info()[0])
 
 
-def get_object():
-    return Project_Template_Project()
+    def get_object():
+        return Project_Template_Project()
 

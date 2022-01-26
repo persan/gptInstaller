@@ -5,9 +5,13 @@ SOURCES += share/gnatstudio/support
 SOURCES += share/gnatstudio/library
 SOURCES += bin
 SOURCES += share/gnatstudio/templates/templateTemplate
+SOURCES += share/gnatstudio/templates/
+SOURCES += share/gnatstudio/templates/template
 
+	
 setup:
 	@true
+
 Makefile.conf:Makefile
 	@echo "export PREFIX?=$(shell dirname $(shell dirname $(shell which gnat)))" >${@}
 	@echo "export PATH:=${PATH}" >>${@}
