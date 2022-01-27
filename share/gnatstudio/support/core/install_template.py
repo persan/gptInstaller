@@ -3,7 +3,9 @@ import os
 from os.path import *
 import re
 import fnmatch
-import imp
+import importlib.util
+import sys
+import glob
 
 
 def find_module(filename):
@@ -12,7 +14,10 @@ def find_module(filename):
         _path = join(path, filename)
         if exists(_path):
             with open(_path, 'r') as file:
-                return imp.load_source("GPTConfig", _path)
+                spec = importlib.util.spec_from_file_location("GPTConfig", _path)
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                return module
         path = dirname(path)
     return None
 
@@ -90,7 +95,6 @@ class GptInstaller:
             return
         tgt = join(self.targetfolder, self.target,
                    self.format(f[len(self.sourcefolder)+1:]))
-        print ("cp  %s -> %s" % (f, tgt))
         buffer = []
         with open(f) as inf:
             for line in inf:
@@ -132,11 +136,10 @@ def main(argv):
             elif isdir(i):
                 for name in glob.glob(join(i, "*.gpt")):
                     GptInstaller(name).install()
-    else:
-        for name in glob.glob(join(i, "*.gpt")):
-            GptInstaller(name).install()
+            else:
+                for name in glob.glob(join(i, "*.gpt")):
+                    GptInstaller(name).install()
 
 
 if __name__ == "__main__":
     main(sys.argv)
-    t.install()

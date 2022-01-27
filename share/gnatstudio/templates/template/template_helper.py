@@ -23,12 +23,16 @@ class Project_Template_Project:
 
     def on_apply(self):
         try:
+            with open("tex.txt", "w") as outf:
+                outf.write("jjj\n")
+
             # Initialize the project as a git project
             #
-            ANSI_Console_Process(command=INIT, force=False)
-            ANSI_Console_Process(command=ADD, force=False)
-            ANSI_Console_Process(command=COMMIT, force=False)
-            GPS.Project.recompute()
+            # ANSI_Console_Process(command=INIT, force=False)
+            # ANSI_Console_Process(command=ADD, force=False)
+            # ANSI_Console_Process(command=COMMIT, force=False)
+            # GPS.Project.recompute()
+            pass
         except:
             print("Unexpected error:", sys.exc_info()[0])
 
