@@ -18,4 +18,4 @@ install_template_gps.py
 messages.txt
 *-main
 clang_ref_cache.db
-
+.clang

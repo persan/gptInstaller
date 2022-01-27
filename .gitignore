@@ -29,3 +29,5 @@ _temp
 *.orig
 .clang-format
 compile_commands.json
+tests
+sources.txt
